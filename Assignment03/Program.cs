@@ -58,18 +58,30 @@ internal class Program
         #endregion
 
         #region Q02
-        var result = ProductsList.Where(p => p.UnitsInStock == 0).GroupBy(p => p.Category).Select(g => new
+        //var result = ProductsList.Where(p => p.UnitsInStock == 0).GroupBy(p => p.Category).Select(g => new
+        //{
+        //    Category = g.Key,
+        //    Products = g.ToList()
+        //});
+        //foreach (var category in result)
+        //{
+        //    Console.WriteLine($"Category: {category.Category}");
+        //    foreach (var product in category.Products)
+        //    {
+        //        Console.WriteLine($"   - {product.ProductName} ");
+        //    }
+        //}
+        #endregion
+
+        #region Q03
+        var result = ProductsList.Where(p => p.UnitsInStock > 0)
+            .GroupBy(p => p.Category);
+        foreach (var item in result)
         {
-            Category = g.Key,
-            Products = g.ToList()
-        });
-        foreach (var category in result)
-        {
-            Console.WriteLine($"Category: {category.Category}");
-            foreach (var product in category.Products)
-            {
-                Console.WriteLine($"   - {product.ProductName} ");
-            }
+            Console.WriteLine(item.Key);
+
+            foreach(var g in item)
+                Console.WriteLine($"    {g}");
         }
         #endregion
         #endregion
