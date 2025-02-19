@@ -89,16 +89,35 @@ internal class Program
 
         #region Grouping Operators
         #region Q01
-        List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-        var result = numbers.GroupBy(n => n % 5).Select(g => new
+        //List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+        //var result = numbers.GroupBy(n => n % 5).Select(g => new
+        //{
+        //    g.Key,
+        //    nums = g.ToList()
+        //});
+        //foreach (var group in result)
+        //{
+        //    Console.WriteLine($"Numbers with remainder {group.Key} when divided by 5:");
+        //    Console.WriteLine(string.Join(", ", group.nums));
+        //}
+        #endregion
+
+        #region Q03
+        string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
+        var groupedWords = Arr
+            .Select(word => word.Trim()) 
+            .GroupBy(word => new string(word.OrderBy(c => c).ToArray())) 
+            .Select(g => new
+            {
+                 g.Key, 
+                Words = g.ToList()
+            });
+
+   
+        foreach (var group in groupedWords)
         {
-            g.Key,
-            nums = g.ToList()
-        });
-        foreach (var group in result)
-        {
-            Console.WriteLine($"Numbers with remainder {group.Key} when divided by 5:");
-            Console.WriteLine(string.Join(", ", group.nums));
+            Console.WriteLine($"Group: {group.Key}");
+            Console.WriteLine(string.Join(", ", group.Words));
         }
         #endregion
         #endregion
