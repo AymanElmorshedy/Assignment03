@@ -30,6 +30,15 @@ internal class Program
         //}
         #endregion
 
+        #region Q04
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        var result = numbers.SkipWhile(n=>n%3!=0);
+        foreach (var number in result)
+        {
+            Console.Write($"{number} ");
+        }
+        #endregion
+
         #endregion
         Console.ReadKey();
     }
