@@ -31,11 +31,21 @@ internal class Program
         #endregion
 
         #region Q04
+        //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        //var result = numbers.SkipWhile(n=>n%3!=0);
+        //foreach (var number in result)
+        //{
+        //    Console.Write($"{number} ");
+        //}
+        #endregion
+
+        #region Q05
         int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-        var result = numbers.SkipWhile(n=>n%3!=0);
-        foreach (var number in result)
+        
+        var result = numbers.SkipWhile((n, i) => n > i);
+        foreach (int n in result)
         {
-            Console.Write($"{number} ");
+            Console.Write($"{n} ");
         }
         #endregion
 
