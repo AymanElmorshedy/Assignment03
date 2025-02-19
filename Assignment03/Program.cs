@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using static Assignment03.ListGenerator;
 
 namespace Assignment03;
@@ -74,14 +75,30 @@ internal class Program
         #endregion
 
         #region Q03
-        var result = ProductsList.Where(p => p.UnitsInStock > 0)
-            .GroupBy(p => p.Category);
-        foreach (var item in result)
-        {
-            Console.WriteLine(item.Key);
+        //var result = ProductsList.Where(p => p.UnitsInStock > 0)
+        //    .GroupBy(p => p.Category);
+        //foreach (var item in result)
+        //{
+        //    Console.WriteLine(item.Key);
 
-            foreach(var g in item)
-                Console.WriteLine($"    {g}");
+        //    foreach(var g in item)
+        //        Console.WriteLine($"    {g}");
+        //}
+        #endregion
+        #endregion
+
+        #region Grouping Operators
+        #region Q01
+        List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+        var result = numbers.GroupBy(n => n % 5).Select(g => new
+        {
+            g.Key,
+            nums = g.ToList()
+        });
+        foreach (var group in result)
+        {
+            Console.WriteLine($"Numbers with remainder {group.Key} when divided by 5:");
+            Console.WriteLine(string.Join(", ", group.nums));
         }
         #endregion
         #endregion
