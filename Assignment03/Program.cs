@@ -1,4 +1,6 @@
-﻿using static Assignment03.ListGenerator;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using static Assignment03.ListGenerator;
 
 namespace Assignment03;
 
@@ -8,12 +10,116 @@ internal class Program
     {
         #region Partisiong Operators
         #region Q01
-        var result = CustomersList.Where(c=>c.Region== "WA")
-            .SelectMany(c=>c.Orders).Take(3);
-        foreach(var item in result)
-            Console.WriteLine(item);
+        //var result = CustomersList.Where(c => c.Region == "WA")
+        //    .SelectMany(c => c.Orders).Take(3);
+        //foreach (var item in result)
+        //    Console.WriteLine(item);
         #endregion
 
+        #region Q02
+        //var result = CustomersList.Where(c => c.Region == "WA")
+        //    .SelectMany(c => c.Orders).Skip(2);
+        //foreach (var item in result)
+        //    Console.WriteLine(item);
+        #endregion
+
+        #region Q03
+        //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        //var result = numbers.TakeWhile((n, i) => n > i);
+        //foreach (int n in result)
+        //{
+        //    Console.WriteLine($"{n} ");
+        //}
+        #endregion
+
+        #region Q04
+        //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        //var result = numbers.SkipWhile(n=>n%3!=0);
+        //foreach (var number in result)
+        //{
+        //    Console.Write($"{number} ");
+        //}
+        #endregion
+
+        #region Q05
+        //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+        //var result = numbers.SkipWhile((n, i) => n > i);
+        //foreach (int n in result)
+        //{
+        //    Console.Write($"{n} ");
+        //}
+        #endregion
+
+        #endregion
+
+        #region Quantifiers Operators
+        #region Q01
+
+        #endregion
+
+        #region Q02
+        //var result = ProductsList.Where(p => p.UnitsInStock == 0).GroupBy(p => p.Category).Select(g => new
+        //{
+        //    Category = g.Key,
+        //    Products = g.ToList()
+        //});
+        //foreach (var category in result)
+        //{
+        //    Console.WriteLine($"Category: {category.Category}");
+        //    foreach (var product in category.Products)
+        //    {
+        //        Console.WriteLine($"   - {product.ProductName} ");
+        //    }
+        //}
+        #endregion
+
+        #region Q03
+        //var result = ProductsList.Where(p => p.UnitsInStock > 0)
+        //    .GroupBy(p => p.Category);
+        //foreach (var item in result)
+        //{
+        //    Console.WriteLine(item.Key);
+
+        //    foreach(var g in item)
+        //        Console.WriteLine($"    {g}");
+        //}
+        #endregion
+        #endregion
+
+        #region Grouping Operators
+        #region Q01
+        //List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+        //var result = numbers.GroupBy(n => n % 5).Select(g => new
+        //{
+        //    g.Key,
+        //    nums = g.ToList()
+        //});
+        //foreach (var group in result)
+        //{
+        //    Console.WriteLine($"Numbers with remainder {group.Key} when divided by 5:");
+        //    Console.WriteLine(string.Join(", ", group.nums));
+        //}
+        #endregion
+
+        #region Q03
+        string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
+        var groupedWords = Arr
+            .Select(word => word.Trim()) 
+            .GroupBy(word => new string(word.OrderBy(c => c).ToArray())) 
+            .Select(g => new
+            {
+                 g.Key, 
+                Words = g.ToList()
+            });
+
+   
+        foreach (var group in groupedWords)
+        {
+            Console.WriteLine($"Group: {group.Key}");
+            Console.WriteLine(string.Join(", ", group.Words));
+        }
+        #endregion
         #endregion
         Console.ReadKey();
     }
